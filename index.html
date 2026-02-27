@@ -93,52 +93,104 @@ button { font-family: inherit; cursor: pointer; border: none; }
   z-index: 1000;
   padding: 0 24px;
   transition: background 0.3s, box-shadow 0.3s;
+  border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(10, 10, 15, 0.82);
+  background: rgba(10, 10, 15, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 var(--border);
+  border-bottom-color: var(--border);
 }
 .nav-inner {
   max-width: var(--max-width);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+}
+
+/* LEFT: nav links + search */
+.nav-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
-.nav-logo {
-  display: flex;
-  align-items: center;
-}
-.nav-logo img {
-  height: 40px;
-  width: auto;
-}
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+  gap: 28px;
   list-style: none;
 }
-.nav-links a {
-  font-size: 14px;
+.nav-left a {
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
   transition: color 0.2s;
+  white-space: nowrap;
 }
-.nav-links a:hover { color: var(--text-primary); }
+.nav-left a:hover { color: var(--text-primary); }
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  padding: 0;
+}
+.nav-search:hover { color: var(--text-primary); }
+.nav-search svg { width: 16px; height: 16px; }
+
+/* CENTER: logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+
+/* RIGHT: language + login */
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.nav-lang:hover { color: var(--text-primary); }
+.nav-lang svg { width: 16px; height: 16px; }
+.nav-login {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-login:hover { color: var(--text-primary); }
+.nav-login svg { width: 15px; height: 15px; }
 .nav-cta {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
+  gap: 5px;
+  padding: 8px 18px;
   background: var(--accent);
   color: var(--bg-primary);
   font-weight: 600;
-  font-size: 14px;
-  border-radius: 10px;
+  font-size: 13px;
+  border-radius: 8px;
   transition: background 0.2s, transform 0.15s;
 }
 .nav-cta:hover { background: var(--accent-dim); transform: translateY(-1px); }
@@ -148,7 +200,9 @@ button { font-family: inherit; cursor: pointer; border: none; }
   flex-direction: column;
   gap: 5px;
   background: none;
+  border: none;
   padding: 4px;
+  cursor: pointer;
 }
 .nav-toggle span {
   width: 22px;
@@ -159,10 +213,11 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 
 @media (max-width: 768px) {
-  .nav-toggle { display: flex; }
-  .nav-links {
+  .nav-inner { grid-template-columns: auto 1fr auto; }
+  .nav-toggle { display: flex; order: -1; }
+  .nav-left {
     position: fixed;
-    top: 72px;
+    top: 64px;
     left: 0;
     right: 0;
     background: rgba(10, 10, 15, 0.96);
@@ -174,8 +229,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     border-bottom: 1px solid var(--border);
   }
-  .nav-links.open { transform: translateY(0); }
-  .nav-links a { font-size: 16px; }
+  .nav-left.open { transform: translateY(0); }
+  .nav-left a { font-size: 16px; }
+  .nav-logo { justify-content: center; }
+  .nav-right { gap: 14px; }
+  .nav-lang span { display: none; }
+  .nav-login span { display: none; }
 }
 
 /* ============================================
@@ -937,20 +996,25 @@ button { font-family: inherit; cursor: pointer; border: none; }
 <!-- ============ NAV ============ -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <img src="logo.png" alt="AgentNexLiFy" style="height: 40px; width: auto;">
-    </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links">
+    <ul class="nav-left">
       <li><a href="#mission">Mission</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#about-us">About</a></li>
-      <li><a href="https://calendly.com/agentnexlify/demo" class="nav-cta">Contact Us &rarr;</a></li>
+      <li><button class="nav-search" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button></li>
     </ul>
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="AgentNexLiFy">
+    </a>
+    <div class="nav-right">
+      <button class="nav-lang" aria-label="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>EN</span></button>
+      <a href="https://calendly.com/agentnexlify/demo" class="nav-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Login</span></a>
+      <a href="https://calendly.com/agentnexlify/demo" class="nav-cta">Contact Us</a>
+    </div>
   </div>
 </nav>
 
@@ -1468,7 +1532,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   checkScroll();
 
   var toggle = document.querySelector(".nav-toggle");
-  var links = document.querySelector(".nav-links");
+  var links = document.querySelector(".nav-left");
   toggle.addEventListener("click", function() {
     var open = links.classList.toggle("open");
     toggle.setAttribute("aria-expanded", open);
