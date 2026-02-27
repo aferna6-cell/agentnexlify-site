@@ -49,7 +49,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
-.section { padding: 80px 0; }
+.section { padding: 100px 0; }
 .section-label {
   font-family: var(--font-heading);
   font-size: 13px;
@@ -60,10 +60,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
   margin-bottom: 16px;
 }
 .section-title {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(34px, 5vw, 52px);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 .section-subtitle {
   font-size: 18px;
@@ -315,15 +315,15 @@ button { font-family: inherit; cursor: pointer; border: none; }
   50% { box-shadow: 0 0 0 6px rgba(29, 78, 216, 0); }
 }
 .hero h1 {
-  font-size: clamp(40px, 7vw, 72px);
-  font-weight: 700;
+  font-size: clamp(44px, 8vw, 72px);
+  font-weight: 800;
   line-height: 1.08;
   margin-bottom: 24px;
   letter-spacing: -1px;
 }
 .hero h1 .accent { color: var(--accent); }
 .hero-sub {
-  font-size: clamp(16px, 2.5vw, 20px);
+  font-size: clamp(17px, 2.5vw, 21px);
   color: var(--text-secondary);
   max-width: 620px;
   margin: 0 auto 40px;
@@ -334,7 +334,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
 }
 .btn-primary {
   display: inline-flex;
@@ -379,82 +379,111 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 
 /* ============================================
-   MISSION
+   TRUST BAR
    ============================================ */
-.mission { background: var(--bg-secondary); }
-.mission-inner {
-  max-width: 700px;
+.trust-bar {
+  text-align: center;
+}
+.trust-bar-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+.trust-bar-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.trust-bar-logos svg {
+  height: 24px;
+  width: auto;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+  fill: var(--text-secondary);
+}
+.trust-bar-logos svg:hover {
+  opacity: 0.7;
+}
+@media (max-width: 480px) {
+  .trust-bar-logos { gap: 24px; }
+  .trust-bar-logos svg { height: 20px; }
+}
+
+/* ============================================
+   WHY SECTION (consolidated)
+   ============================================ */
+.why { background: var(--bg-secondary); }
+.why-inner {
+  max-width: 720px;
   margin: 0 auto;
   text-align: center;
 }
-.mission-body {
+.why-body {
   font-size: 16px;
   color: var(--text-secondary);
   line-height: 1.75;
   margin-top: 20px;
 }
-.mission-quote {
+.why-body + .why-body {
+  margin-top: 16px;
+}
+.why-quote {
   margin-top: 36px;
   font-size: 20px;
   font-weight: 600;
   color: var(--accent);
   font-style: italic;
   line-height: 1.5;
+  padding: 24px 32px;
+  border-left: 3px solid var(--accent);
+  background: rgba(29, 78, 216, 0.03);
+  border-radius: 0 12px 12px 0;
+  text-align: left;
 }
 
 /* ============================================
-   PROBLEM
+   STATS BAR
    ============================================ */
-.problem-inner {
-  max-width: 720px;
-  margin: 0 auto;
+.stats-bar {
+  padding: 64px 0;
+  background: var(--bg-secondary);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
   text-align: center;
 }
-.problem-body {
-  font-size: 16px;
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-top: 20px;
-}
-.problem-closer {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-top: 28px;
-}
-
-/* ============================================
-   THE SHIFT
-   ============================================ */
-.shift { background: var(--bg-secondary); }
-.shift-inner {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-.shift-questions {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 28px;
-}
-.shift-q {
-  font-size: 18px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  font-style: italic;
-}
-.shift-punchline {
-  font-size: 19px;
-  font-weight: 600;
+.stat-item {}
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
   color: var(--accent);
-  margin-top: 32px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+  .stat-number { font-size: 36px; }
 }
 
 /* ============================================
    FEATURES
    ============================================ */
-.features-header { text-align: center; margin-bottom: 36px; }
+.features-header { text-align: center; margin-bottom: 48px; }
 .features-header .section-subtitle { margin: 0 auto; }
 .features-grid {
   display: grid;
@@ -465,14 +494,14 @@ button { font-family: inherit; cursor: pointer; border: none; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 28px;
+  padding: 36px 32px;
   transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 .feature-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-light);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
 }
 .feature-icon {
   width: 48px;
@@ -507,7 +536,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
    HOW IT WORKS
    ============================================ */
 .how { background: var(--bg-secondary); }
-.how-header { text-align: center; margin-bottom: 36px; }
+.how-header { text-align: center; margin-bottom: 48px; }
 .how-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -558,7 +587,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 /* ============================================
    WHO IT'S FOR
    ============================================ */
-.who-header { text-align: center; margin-bottom: 36px; }
+.who-header { text-align: center; margin-bottom: 48px; }
 .who-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -568,7 +597,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 28px 24px;
+  padding: 32px 28px;
   transition: background 0.3s, transform 0.3s, border-color 0.3s;
 }
 .who-card:hover {
@@ -743,12 +772,13 @@ button { font-family: inherit; cursor: pointer; border: none; }
   margin-top: auto;
 }
 .pricing-card .pricing-cta {
-  background: rgba(0,0,0,0.04);
+  background: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border-light);
 }
 .pricing-card .pricing-cta:hover {
-  background: rgba(0,0,0,0.07);
+  border-color: var(--text-muted);
+  background: rgba(0,0,0,0.03);
   transform: translateY(-1px);
 }
 .pricing-card.popular .pricing-cta {
@@ -1026,7 +1056,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-left">
-      <li><a href="#mission">Mission</a></li>
+      <li><a href="#why">Why Us</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
@@ -1058,39 +1088,58 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="btn-primary">Book a Strategy Call &rarr;</a>
       <a href="#how-it-works" class="btn-secondary">See How It Works &darr;</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ MISSION ============ -->
-<section class="section mission" id="mission">
-  <div class="container mission-inner">
-    <div class="section-label reveal">Our Mission</div>
-    <h2 class="section-title reveal">AI that works for you.</h2>
-    <p class="mission-body reveal">At Agent NexLiFy, we exist to make AI simple and accessible for businesses. We help automate the mundane, streamline operations, and unlock growth opportunities without complexity or corporate jargon. Our goal is to be trusted partners for businesses at every stage, delivering hands-on support that saves time, increases efficiency, and drives meaningful revenue growth.</p>
-    <p class="mission-quote reveal">"We're not here to sell you software. We're here to help you grow."</p>
-  </div>
-</section>
-
-<!-- ============ PROBLEM ============ -->
-<section class="section">
-  <div class="container problem-inner">
-    <div class="section-label reveal">The Problem</div>
-    <h2 class="section-title reveal">You started your business for a reason. Let's get you back to it.</h2>
-    <p class="problem-body reveal">Emails. Leads. Scheduling. Follow-ups. Admin. The daily grind quietly takes over your calendar. Before long, you're spending more time managing tasks than driving growth.</p>
-    <p class="problem-closer reveal">You didn't build your business to manage busywork.</p>
-  </div>
-</section>
-
-<!-- ============ THE SHIFT ============ -->
-<section class="section shift">
-  <div class="container shift-inner">
-    <div class="section-label reveal">There's a Better Way</div>
-    <div class="shift-questions reveal">
-      <p class="shift-q">What if your leads were captured automatically?</p>
-      <p class="shift-q">What if follow-ups went out on time, every time?</p>
-      <p class="shift-q">What if scheduling didn't require endless back-and-forth?</p>
+    <div class="trust-bar reveal">
+      <p class="trust-bar-label">Trusted by businesses using</p>
+      <div class="trust-bar-logos">
+        <!-- Gmail -->
+        <svg viewBox="0 0 24 24" aria-label="Gmail"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+        <!-- Google Calendar -->
+        <svg viewBox="0 0 24 24" aria-label="Google Calendar"><path d="M18.316 5.684H24v12.632h-5.684V5.684zM5.684 24h12.632v-5.684H5.684V24zM18.316 5.684V0H5.684v5.684h12.632zM5.684 18.316H0V5.684h5.684v12.632zM7.953 14.39l1.478-1.149c.543.49 1.142.735 1.797.735.654 0 1.108-.254 1.108-.815 0-.462-.336-.735-1.01-.998l-.736-.287c-1.087-.42-1.621-1.109-1.621-2.098 0-1.314 1.034-2.197 2.507-2.197.922 0 1.72.342 2.274.943l-1.264 1.155c-.385-.336-.77-.504-1.176-.504-.44 0-.748.222-.748.598 0 .368.253.586.849.81l.748.288c1.216.468 1.785 1.108 1.785 2.24 0 1.351-1.064 2.344-2.67 2.344-1.143 0-2.07-.434-2.72-1.264l.4-.8z"/></svg>
+        <!-- HubSpot -->
+        <svg viewBox="0 0 24 24" aria-label="HubSpot"><path d="M18.164 7.93V5.084a2.198 2.198 0 0 0 1.267-1.984v-.066a2.2 2.2 0 0 0-2.198-2.198h-.066a2.2 2.2 0 0 0-2.198 2.198v.066c0 .865.506 1.61 1.233 1.966v2.862a5.662 5.662 0 0 0-2.905 1.384l-7.666-5.97a2.39 2.39 0 0 0 .072-.563 2.413 2.413 0 1 0-2.413 2.413c.437 0 .842-.122 1.2-.325l7.544 5.876a5.668 5.668 0 0 0-.478 2.279 5.681 5.681 0 0 0 .565 2.47l-2.262 2.263a1.88 1.88 0 0 0-.573-.097 1.902 1.902 0 1 0 1.901 1.901c0-.2-.035-.39-.092-.572l2.235-2.235a5.686 5.686 0 0 0 3.45 1.17h.002a5.69 5.69 0 1 0 0-11.38 5.69 5.69 0 0 0-2.576.612l-.062.033zm.062 8.151h-.002a2.843 2.843 0 1 1 .002 0z"/></svg>
+        <!-- Salesforce -->
+        <svg viewBox="0 0 24 24" aria-label="Salesforce"><path d="M10.006 5.415a4.195 4.195 0 0 1 3.045-1.306c1.56 0 2.954.9 3.69 2.205a4.89 4.89 0 0 1 2.013-.432c2.735 0 4.952 2.23 4.952 4.98s-2.217 4.98-4.952 4.98a4.937 4.937 0 0 1-.765-.06 3.469 3.469 0 0 1-3.089 1.913 3.469 3.469 0 0 1-1.48-.332 4.14 4.14 0 0 1-3.783 2.47 4.14 4.14 0 0 1-3.682-2.25 3.596 3.596 0 0 1-.61.053c-1.987 0-3.598-1.62-3.598-3.618a3.61 3.61 0 0 1 1.487-2.918A4.39 4.39 0 0 1 3 9.09c0-2.442 1.976-4.42 4.414-4.42 1.466 0 2.632.604 3.592 1.745z"/></svg>
+        <!-- Slack -->
+        <svg viewBox="0 0 24 24" aria-label="Slack"><path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zm1.271 0a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zm0 1.271a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zm10.122 2.521a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zm-1.268 0a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zm-2.523 10.122a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zm0-1.268a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/></svg>
+        <!-- QuickBooks -->
+        <svg viewBox="0 0 24 24" aria-label="QuickBooks"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm5.723 16.17h-1.807c0 1.268-1.027 2.297-2.294 2.297v-1.81c0-2.049-.006-4.098.003-6.147.003-.596-.003-1.057-.699-1.286-.938-.31-1.89.37-1.89 1.382.004 2.037.001 4.074.002 6.11v1.75h-1.81c0 1.268-1.026 2.297-2.293 2.297V7.833h1.81c0-1.27 1.026-2.297 2.293-2.297v1.81c0 2.048.006 4.097-.003 6.146-.003.596.003 1.058.699 1.287.938.309 1.89-.371 1.89-1.383-.004-2.037-.001-4.074-.002-6.11v-1.75h1.808c0-1.27 1.026-2.298 2.293-2.298V16.17z"/></svg>
+      </div>
     </div>
-    <p class="shift-punchline reveal">When systems handle the repetitive work, you get your time back.</p>
+  </div>
+</section>
+
+<!-- ============ WHY AGENT NEXLIFY ============ -->
+<section class="section why" id="why">
+  <div class="container why-inner">
+    <div class="section-label reveal">Why Agent NexLiFy</div>
+    <h2 class="section-title reveal">You started your business for a reason. Let's get you back to it.</h2>
+    <p class="why-body reveal">Emails. Leads. Scheduling. Follow-ups. Admin. The daily grind quietly takes over your calendar. Before long, you're spending more time managing tasks than driving growth. You didn't build your business to manage busywork.</p>
+    <p class="why-body reveal">What if your leads were captured automatically? What if follow-ups went out on time, every time? What if scheduling didn't require endless back-and-forth? When systems handle the repetitive work, you get your time back.</p>
+    <blockquote class="why-quote reveal">"We're not here to sell you software. We're here to help you grow."</blockquote>
+  </div>
+</section>
+
+<!-- ============ STATS BAR ============ -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number">48hr</div>
+        <div class="stat-label">Setup Time</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">97%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">AI Automation</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Done-For-You</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1488,8 +1537,9 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="container cta-content">
     <h2 class="section-title reveal">Ready to get back to doing what you love?</h2>
     <p class="section-subtitle reveal">Reach out and tell us about your business. We'll walk you through exactly how we can help.</p>
-    <div class="reveal">
+    <div class="hero-buttons reveal" style="margin-bottom: 0;">
       <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="btn-primary">Book a Strategy Call &rarr;</a>
+      <a href="#pricing" class="btn-secondary">See Pricing &darr;</a>
     </div>
     <p class="cta-note reveal">No commitment. No pressure. Just a conversation.</p>
   </div>
@@ -1502,6 +1552,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <div class="footer-brand">
         <img src="logo.png" alt="Agent NexLiFy Logo" class="footer-brand-logo">
         <p>AI-powered operations for businesses.</p>
+        <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="btn-primary" style="margin-top: 16px; font-size: 14px; padding: 12px 24px;">Book a Strategy Call &rarr;</a>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
@@ -1514,7 +1565,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#why">Why Us</a></li>
           <li><a href="#about-us">About</a></li>
           <li><a href="mailto:hello@agentnexlify.com">Contact</a></li>
         </ul>
