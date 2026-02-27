@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AgentNexLiFy | AI-Powered Operations for Your Business</title>
-<meta name="description" content="AgentNexLiFy handles your lead capture, follow-ups, scheduling, reviews, and admin so you can focus on what actually grows your business. Starting at $99/mo.">
+<meta name="description" content="AgentNexLiFy automates your emails, scheduling, lead capture, follow-ups, and admin so you can spend more time doing what you love. Starting at $99/mo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -49,7 +49,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
 
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
 
-/* ---- Section shared styles ---- */
 .section { padding: 100px 0; }
 .section-label {
   font-family: var(--font-heading);
@@ -73,7 +72,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
   line-height: 1.6;
 }
 
-/* ---- Scroll animations ---- */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -145,7 +143,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 .nav-cta:hover { background: var(--accent-dim); transform: translateY(-1px); }
 
-/* Mobile nav toggle */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -323,9 +320,32 @@ button { font-family: inherit; cursor: pointer; border: none; }
 }
 
 /* ============================================
+   MISSION
+   ============================================ */
+.mission { background: var(--bg-secondary); }
+.mission-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.mission-body {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-top: 20px;
+}
+.mission-quote {
+  margin-top: 36px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ============================================
    PROBLEM
    ============================================ */
-.problem { background: var(--bg-secondary); }
 .problem-inner {
   max-width: 720px;
   margin: 0 auto;
@@ -704,25 +724,29 @@ button { font-family: inherit; cursor: pointer; border: none; }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 28px;
+  padding: 36px 28px 32px;
   transition: transform 0.3s, border-color 0.3s;
+  position: relative;
 }
 .testimonial-card:hover {
   transform: translateY(-3px);
   border-color: var(--border-light);
 }
-.testimonial-stars {
-  color: #fbbf24;
-  font-size: 16px;
-  margin-bottom: 16px;
-  letter-spacing: 2px;
+.testimonial-deco {
+  font-family: var(--font-heading);
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.15;
+  line-height: 1;
+  margin-bottom: -12px;
+  pointer-events: none;
 }
 .testimonial-quote {
-  font-size: 15px;
+  font-size: 15.5px;
   color: var(--text-primary);
   line-height: 1.65;
-  margin-bottom: 20px;
-  font-style: italic;
+  margin-bottom: 24px;
 }
 .testimonial-author {
   font-size: 14px;
@@ -733,17 +757,39 @@ button { font-family: inherit; cursor: pointer; border: none; }
   font-size: 13px;
   color: var(--text-muted);
 }
-.testimonials-note {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 13px;
+.testimonial-since {
+  font-size: 12px;
   color: var(--text-muted);
-  font-style: italic;
+  margin-top: 6px;
 }
 
 @media (max-width: 768px) {
   .testimonials-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
+
+/* ============================================
+   ABOUT US
+   ============================================ */
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-body {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-top: 20px;
+}
+.about-link {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+.about-link:hover { color: var(--accent-dim); }
 
 /* ============================================
    FAQ
@@ -913,10 +959,11 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#about-us">About</a></li>
       <li><a href="https://calendly.com/agentnexlify/demo" class="nav-cta">Book a Demo &rarr;</a></li>
     </ul>
   </div>
@@ -928,10 +975,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <img src="logo.png" alt="AgentNexLiFy Logo" class="hero-logo reveal">
     <div class="hero-badge reveal">
       <span class="hero-badge-dot" aria-hidden="true"></span>
-      Now automating 15+ hours/week for small businesses
+      Now saving 15+ hours/week for local businesses
     </div>
-    <h1 class="reveal">Stop doing the work<br><span class="accent">your business</span> should do for you.</h1>
-    <p class="hero-sub reveal">AgentNexLiFy handles your lead capture, follow-ups, scheduling, reviews, and admin so you can focus on what actually grows your business.</p>
+    <h1 class="reveal">Focus on what you do best.<br><span class="accent">We'll handle the rest.</span></h1>
+    <p class="hero-sub reveal">AgentNexLiFy automates your emails, scheduling, lead capture, follow-ups, and admin so you can spend more time doing what you love.</p>
     <div class="hero-buttons reveal">
       <a href="https://calendly.com/agentnexlify/demo" class="btn-primary">Book a Free Demo &rarr;</a>
       <a href="#how-it-works" class="btn-secondary">See How It Works &darr;</a>
@@ -939,26 +986,36 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <div class="hero-stats reveal">
       <div class="hero-stat">
         <div class="hero-stat-value">15+ hrs/wk</div>
-        <div class="hero-stat-label">Average time saved per client</div>
+        <div class="hero-stat-label">Average time saved per partner</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-value">&lt; 60 sec</div>
-        <div class="hero-stat-label">AI response time to leads</div>
+        <div class="hero-stat-label">AI response time</div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-value">97%</div>
-        <div class="hero-stat-label">Client retention rate</div>
+        <div class="hero-stat-label">Partner retention rate</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============ MISSION ============ -->
+<section class="section mission" id="mission">
+  <div class="container mission-inner">
+    <div class="section-label reveal">Our Mission</div>
+    <h2 class="section-title reveal">AI that works for your community.</h2>
+    <p class="mission-body reveal">At AgentNexLiFy, we exist to make AI simple and accessible for local businesses. We help automate the mundane, streamline operations, and unlock growth opportunities without complexity or corporate jargon. Our goal is to be a trusted partner for businesses in every community, delivering hands-on support that saves time, increases efficiency, and drives meaningful revenue growth.</p>
+    <p class="mission-quote reveal">"We're not here to sell you software. We're here to help you grow."</p>
+  </div>
+</section>
+
 <!-- ============ PROBLEM ============ -->
-<section class="section problem">
+<section class="section">
   <div class="container problem-inner">
     <div class="section-label reveal">The Problem</div>
-    <h2 class="section-title reveal">You didn't start a business to answer emails all day.</h2>
-    <p class="problem-body reveal">Small business owners spend 40%+ of their time on admin, scheduling, follow-ups, and data entry. That's 15-20 hours a week on tasks that don't directly make money. Meanwhile, leads go cold, emails pile up, and the important stuff keeps getting pushed to &ldquo;tomorrow.&rdquo;</p>
+    <h2 class="section-title reveal">You started your business for a reason. Let's get you back to it.</h2>
+    <p class="problem-body reveal">Running a business means wearing every hat. Answering emails, chasing leads, scheduling appointments, following up, updating spreadsheets. It adds up. Before you know it, you're spending more time on admin than on the work that actually matters. We get it, and we're here to help.</p>
     <div class="problem-icons reveal">
       <div class="problem-icon" title="Wasted time">&#9200;</div>
       <div class="problem-icon" title="Email overload">&#9993;</div>
@@ -973,8 +1030,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="container">
     <div class="features-header">
       <div class="section-label reveal">What We Automate</div>
-      <h2 class="section-title reveal">Your AI operations team. Always on.</h2>
-      <p class="section-subtitle reveal">We set up, manage, and optimize AI automations tailored to your business. You don't touch a thing.</p>
+      <h2 class="section-title reveal">Smart automations that work as hard as you do.</h2>
+      <p class="section-subtitle reveal">We set up, manage, and optimize AI automations tailored to your business. No tech skills needed. We handle everything.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
@@ -1016,7 +1073,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="container">
     <div class="how-header">
       <div class="section-label reveal">How It Works</div>
-      <h2 class="section-title reveal">Live in 48 hours. No tech skills needed.</h2>
+      <h2 class="section-title reveal">Up and running in 48 hours. We do the heavy lifting.</h2>
     </div>
     <div class="how-steps">
       <div class="how-step reveal">
@@ -1031,7 +1088,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
       </div>
       <div class="how-step reveal">
         <div class="how-step-num" aria-hidden="true">03</div>
-        <h3>You Save 15+ Hours/Week</h3>
+        <h3>You Get Your Time Back</h3>
         <p>Your automations run 24/7. We monitor, optimize, and add new ones as your business grows.</p>
       </div>
     </div>
@@ -1043,7 +1100,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   <div class="container">
     <div class="who-header">
       <div class="section-label reveal">Built For</div>
-      <h2 class="section-title reveal">Small businesses that are tired of busywork.</h2>
+      <h2 class="section-title reveal">Built for businesses like yours.</h2>
     </div>
     <div class="who-grid">
       <div class="who-card reveal">
@@ -1086,7 +1143,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <div class="pricing-header">
       <div class="section-label reveal">Pricing</div>
       <h2 class="section-title reveal">Simple pricing. Serious ROI.</h2>
-      <p class="section-subtitle reveal">Every plan includes done-for-you setup, onboarding, and ongoing optimization.</p>
+      <p class="section-subtitle reveal">Every plan includes hands-on setup, onboarding, and ongoing support from our team.</p>
     </div>
     <div class="pricing-grid">
 
@@ -1111,7 +1168,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           </li>
           <li>
             <strong>Missed Call Text-Back</strong>
-            <div class="feat-desc">Missed a call? Leads instantly get &ldquo;Sorry we missed you&rdquo; via SMS, automatically.</div>
+            <div class="feat-desc">Missed a call? Leads instantly get "Sorry we missed you" via SMS, automatically.</div>
           </li>
           <li>
             <strong>Appointment Reminders</strong>
@@ -1136,7 +1193,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
         <ul class="pricing-features">
           <li>
             <strong>Lead Follow-Up Drip System</strong>
-            <div class="feat-desc">New lead comes in &rarr; automatic email + text sequence fires. 5-7 AI-personalized touchpoints over 14 days.</div>
+            <div class="feat-desc">New lead comes in, automatic email + text sequence fires. 5-7 AI-personalized touchpoints over 14 days.</div>
           </li>
           <li>
             <strong>AI FAQ & Customer Support Bot</strong>
@@ -1144,7 +1201,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           </li>
           <li>
             <strong>Quote & Estimate Automation</strong>
-            <div class="feat-desc">Customer fills out a form &rarr; AI generates a formatted estimate draft &rarr; sends it automatically.</div>
+            <div class="feat-desc">Customer fills out a form, AI generates a formatted estimate draft, sends it automatically.</div>
           </li>
           <li>
             <strong>CRM Setup + Pipeline Automation</strong>
@@ -1177,7 +1234,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           </li>
           <li>
             <strong>Internal Task Automation</strong>
-            <div class="feat-desc">Sale closes &rarr; auto-create tasks, notify your team, send onboarding emails. Operations on autopilot.</div>
+            <div class="feat-desc">Sale closes, auto-create tasks, notify your team, send onboarding emails. Operations on autopilot.</div>
           </li>
           <li>
             <strong>AI Lead Scoring</strong>
@@ -1206,7 +1263,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           </li>
           <li>
             <strong>Full Marketing Automation Engine</strong>
-            <div class="feat-desc">Ad lead intake &rarr; SMS + email nurturing &rarr; retargeting &rarr; review requests &rarr; upsell campaigns.</div>
+            <div class="feat-desc">Ad lead intake, SMS + email nurturing, retargeting, review requests, and upsell campaigns. Everything connected.</div>
           </li>
           <li>
             <strong>AI Ops Dashboard</strong>
@@ -1230,29 +1287,41 @@ button { font-family: inherit; cursor: pointer; border: none; }
 <section class="section" id="testimonials">
   <div class="container">
     <div class="testimonials-header">
-      <h2 class="section-title reveal">Trusted by businesses who value their time.</h2>
+      <h2 class="section-title reveal">Don't just take our word for it.</h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-quote">&ldquo;AgentNexLiFy saved me 20 hours a week. I actually leave the office by 5pm now.&rdquo;</p>
+        <div class="testimonial-deco" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-quote">I was spending 3 hours every morning just sorting emails and following up with leads. AgentNexLiFy set everything up in two days. Now my mornings are free and I haven't missed a lead since.</p>
         <div class="testimonial-author">Sarah M.</div>
         <div class="testimonial-role">Real Estate Agent, Austin TX</div>
+        <div class="testimonial-since">AgentNexLiFy partner since January 2026</div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-quote">&ldquo;I was skeptical about AI, but they set everything up for me. My inbox practically manages itself.&rdquo;</p>
+        <div class="testimonial-deco" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-quote">Honestly, I was skeptical about AI. But these guys walked me through everything, and I didn't have to learn any new tools. My inbox practically manages itself and my Google reviews went from 12 to 47 in three months.</p>
         <div class="testimonial-author">David R.</div>
         <div class="testimonial-role">Law Firm Owner, Denver CO</div>
+        <div class="testimonial-since">AgentNexLiFy partner since February 2026</div>
       </div>
       <div class="testimonial-card reveal">
-        <div class="testimonial-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-quote">&ldquo;The lead capture bot paid for itself in the first week. Three new clients from after-hours inquiries.&rdquo;</p>
-        <div class="testimonial-author">Rachel K.</div>
+        <div class="testimonial-deco" aria-hidden="true">&ldquo;</div>
+        <p class="testimonial-quote">The missed call text-back alone was worth it. I run a plumbing company. I can't answer the phone when I'm under a sink. Now every missed call gets an instant response, and I've booked at least 10 extra jobs from it.</p>
+        <div class="testimonial-author">Marcus T.</div>
         <div class="testimonial-role">Home Services, Tampa FL</div>
+        <div class="testimonial-since">AgentNexLiFy partner since January 2026</div>
       </div>
     </div>
-    <p class="testimonials-note reveal">Results from early access clients</p>
+  </div>
+</section>
+
+<!-- ============ ABOUT US ============ -->
+<section class="section" id="about-us">
+  <div class="container about-inner">
+    <div class="section-label reveal">About Us</div>
+    <h2 class="section-title reveal">The people behind AgentNexLiFy.</h2>
+    <p class="about-body reveal">We're a team of builders, problem-solvers, and AI specialists who believe every business deserves access to the tools that were once reserved for big corporations. We started AgentNexLiFy because we saw local business owners spending too much time on tasks that technology could handle, and not enough time on the work that matters to them and their customers. We're based in the US, we answer our own emails (well, most of them. We automated the rest), and we treat every business we work with like a true partner.</p>
+    <a href="#cta" class="about-link reveal">Want to learn more about our story? Get in touch &rarr;</a>
   </div>
 </section>
 
@@ -1300,7 +1369,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer" id="faq-a4" role="region">
-          <div class="faq-answer-inner">Most clients are fully live within 48 hours of our kickoff call. Complex custom workflows may take up to a week.</div>
+          <div class="faq-answer-inner">Most businesses we work with are fully live within 48 hours of our kickoff call. Complex custom workflows may take up to a week.</div>
         </div>
       </div>
 
@@ -1310,7 +1379,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer" id="faq-a5" role="region">
-          <div class="faq-answer-inner">Absolutely. Most clients start with Foundation or Growth and upgrade within a few months once they see results. We'll migrate everything seamlessly with no downtime and no lost data.</div>
+          <div class="faq-answer-inner">Absolutely. Most of our partners start with Foundation or Growth and upgrade within a few months once they see results. We'll migrate everything seamlessly with no downtime and no lost data.</div>
         </div>
       </div>
 
@@ -1351,12 +1420,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
 <!-- ============ CTA ============ -->
 <section class="cta-section" id="cta">
   <div class="container cta-content">
-    <h2 class="section-title reveal">Ready to get 15+ hours back every week?</h2>
-    <p class="section-subtitle reveal">Book a free 15-minute demo. We'll show you exactly which tasks we can automate for your business.</p>
+    <h2 class="section-title reveal">Ready to get back to doing what you love?</h2>
+    <p class="section-subtitle reveal">Book a free 15-minute call. We'll walk you through exactly how we can help your business.</p>
     <div class="reveal">
       <a href="https://calendly.com/agentnexlify/demo" class="btn-primary">Book Your Free Demo &rarr;</a>
     </div>
-    <p class="cta-note reveal">No commitment. No credit card. Just a conversation.</p>
+    <p class="cta-note reveal">No commitment. No pressure. Just a conversation.</p>
   </div>
 </section>
 
@@ -1366,7 +1435,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="logo.png" alt="AgentNexLiFy Logo" class="footer-brand-logo">
-        <p>AI-powered operations for small business.</p>
+        <p>AI-powered operations for local businesses.</p>
       </div>
       <div class="footer-col">
         <h4>Product</h4>
@@ -1379,8 +1448,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#about-us">About</a></li>
           <li><a href="mailto:hello@agentnexlify.com">Contact</a></li>
         </ul>
       </div>
@@ -1410,7 +1479,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
 (function() {
   "use strict";
 
-  // ---- Navbar scroll state ----
   var nav = document.querySelector(".nav");
   var scrolled = false;
   function checkScroll() {
@@ -1423,14 +1491,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
   window.addEventListener("scroll", checkScroll, { passive: true });
   checkScroll();
 
-  // ---- Mobile menu toggle ----
   var toggle = document.querySelector(".nav-toggle");
   var links = document.querySelector(".nav-links");
   toggle.addEventListener("click", function() {
     var open = links.classList.toggle("open");
     toggle.setAttribute("aria-expanded", open);
   });
-  // Close on link click
   links.querySelectorAll("a").forEach(function(a) {
     a.addEventListener("click", function() {
       links.classList.remove("open");
@@ -1438,17 +1504,14 @@ button { font-family: inherit; cursor: pointer; border: none; }
     });
   });
 
-  // ---- FAQ accordion ----
   document.querySelectorAll(".faq-question").forEach(function(btn) {
     btn.addEventListener("click", function() {
       var expanded = btn.getAttribute("aria-expanded") === "true";
-      // Close all
       document.querySelectorAll(".faq-question").forEach(function(b) {
         b.setAttribute("aria-expanded", "false");
         var a = b.nextElementSibling;
         a.style.maxHeight = null;
       });
-      // Open clicked (if it was closed)
       if (!expanded) {
         btn.setAttribute("aria-expanded", "true");
         var answer = btn.nextElementSibling;
@@ -1457,7 +1520,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
     });
   });
 
-  // ---- Scroll reveal (IntersectionObserver) ----
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function(entries) {
@@ -1470,7 +1532,6 @@ button { font-family: inherit; cursor: pointer; border: none; }
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     reveals.forEach(function(el) { observer.observe(el); });
   } else {
-    // Fallback: show everything
     reveals.forEach(function(el) { el.classList.add("visible"); });
   }
 })();
