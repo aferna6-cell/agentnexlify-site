@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free AI Chat Widget | Agent NexLiFy</title>
+<meta name="description" content="Add a free AI-powered chat widget to your website in under 60 seconds. Capture leads, answer questions, and grow your business on autopilot.">
+<meta property="og:title" content="Free AI Chat Widget — Agent NexLiFy">
+<meta property="og:description" content="Add a free AI-powered chat widget to your website in under 60 seconds. No credit card. No commitment.">
+<meta property="og:image" content="https://agentnexlify.com/og-image.png">
+<meta property="og:url" content="https://agentnexlify.com/free-widget.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #111118;
+  --bg-card-hover: #16161f;
+  --accent: #00bfff;
+  --accent-dim: #00a0d6;
+  --accent-glow: rgba(0, 191, 255, 0.1);
+  --accent-glow-strong: rgba(0, 191, 255, 0.18);
+  --text: #f0f0f5;
+  --text-secondary: #9494a8;
+  --text-muted: #5c5c72;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.14);
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --max-width: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); line-height: 1.15; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.section-subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 24px;
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+  background: #0a0a0f;
+}
+.nav.scrolled {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-left a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9494a8;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-left a:hover { color: #f0f0f5; }
+.nav-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.nav-login {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9494a8;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-login:hover { color: #f0f0f5; }
+.nav-login svg { width: 15px; height: 15px; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 18px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+.nav-cta:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.nav-toggle span {
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: #f0f0f5;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-toggle span:nth-child(1) { top: 5px; }
+.nav-toggle span:nth-child(2) { top: 11px; }
+.nav-toggle span:nth-child(3) { top: 17px; }
+.nav-toggle.active span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .nav-inner { grid-template-columns: auto 1fr auto; }
+  .nav-toggle { display: block; order: -1; }
+  .nav-left {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0a0a0f;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    overflow-y: auto;
+    transform: translateY(-120%);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    z-index: 999;
+  }
+  .nav-left.open { transform: translateY(0); opacity: 1; }
+  .nav-left li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-left li:last-child { border-bottom: none; }
+  .nav-left a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 17px;
+    font-weight: 500;
+    color: #f0f0f5;
+    padding: 18px 24px;
+    width: 100%;
+  }
+  .nav-left a:hover { background: rgba(255,255,255,0.05); }
+  .nav-logo { justify-content: center; }
+  .nav-right { gap: 14px; }
+  .nav-login span { display: none; }
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 140px 0 80px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(0, 191, 255, 0.10) 0%, transparent 70%),
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 60px 60px, 60px 60px;
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(0, 191, 255, 0.1);
+  border: 1px solid rgba(0, 191, 255, 0.25);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+.hero-badge-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(0, 191, 255, 0); }
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 68px);
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero-sub {
+  font-size: clamp(17px, 2.5vw, 20px);
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto 48px;
+  line-height: 1.65;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(0, 191, 255, 0.2);
+}
+.btn-primary:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 191, 255, 0.3);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   WIDGET MOCKUP
+   ============================================ */
+.widget-mockup {
+  max-width: 820px;
+  margin: 56px auto 0;
+  perspective: 1200px;
+}
+.browser-frame {
+  background: #1a1a24;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 80px rgba(0,191,255,0.06);
+  transform: rotateX(2deg);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.browser-frame:hover { transform: rotateX(0deg); }
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: #12121a;
+  border-bottom: 1px solid var(--border);
+}
+.browser-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2a2a36;
+}
+.browser-dot:nth-child(1) { background: #ff5f57; }
+.browser-dot:nth-child(2) { background: #febc2e; }
+.browser-dot:nth-child(3) { background: #28c840; }
+.browser-url {
+  flex: 1;
+  margin-left: 12px;
+  background: #1a1a24;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+.browser-body {
+  position: relative;
+  height: 380px;
+  background:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  overflow: hidden;
+}
+/* Fake page content */
+.fake-header {
+  height: 48px;
+  background: #16161f;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 24px;
+}
+.fake-logo {
+  width: 80px;
+  height: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 4px;
+}
+.fake-nav-item {
+  width: 48px;
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+}
+.fake-content {
+  padding: 32px 24px;
+}
+.fake-h1 {
+  width: 260px;
+  height: 16px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.fake-h1-2 {
+  width: 180px;
+  height: 16px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.fake-text {
+  width: 320px;
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.fake-btn {
+  width: 120px;
+  height: 32px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+/* Chat widget bubble */
+.chat-widget {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+.chat-window {
+  width: 100%;
+  background: #1e1e2a;
+  border-radius: 16px;
+  border: 1px solid rgba(0,191,255,0.2);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 30px rgba(0,191,255,0.08);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: chatOpen 0.5s 1s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes chatOpen {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.chat-header {
+  background: linear-gradient(135deg, var(--accent), #0090c0);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.chat-header-text {
+  flex: 1;
+}
+.chat-header-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+.chat-header-status {
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+}
+.chat-messages {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+}
+.chat-msg {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.chat-msg.bot {
+  background: #2a2a38;
+  color: var(--text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+.chat-msg.user {
+  background: var(--accent);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.chat-msg:nth-child(1) { animation: msgIn 0.4s 1.6s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.chat-msg:nth-child(2) { animation: msgIn 0.4s 2.8s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+.chat-msg:nth-child(3) { animation: msgIn 0.4s 4.0s forwards cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes msgIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.chat-input-field {
+  flex: 1;
+  height: 32px;
+  background: #2a2a38;
+  border-radius: 16px;
+  border: none;
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.chat-input-send {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-input-send svg { width: 14px; height: 14px; }
+
+/* Floating trigger button */
+.chat-trigger {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(0,191,255,0.3);
+  animation: triggerPulse 3s infinite;
+}
+@keyframes triggerPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(0,191,255,0.3); }
+  50% { box-shadow: 0 6px 24px rgba(0,191,255,0.5), 0 0 0 8px rgba(0,191,255,0.1); }
+}
+.chat-trigger svg { width: 24px; height: 24px; fill: #fff; }
+
+/* Typing dots */
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  padding: 10px 14px;
+  background: #2a2a38;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  opacity: 0;
+  animation: msgIn 0.3s 1.2s forwards, fadeOut 0.3s 1.5s forwards;
+}
+@keyframes fadeOut { to { opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; } }
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typeBounce 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typeBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+@media (max-width: 768px) {
+  .browser-body { height: 320px; }
+  .chat-widget { width: 240px; bottom: 12px; right: 12px; }
+  .chat-messages { min-height: 100px; padding: 10px; }
+  .chat-msg { font-size: 11px; padding: 8px 10px; }
+  .fake-content { padding: 20px 16px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 120px 0 56px; }
+  .widget-mockup { margin-top: 40px; }
+  .browser-body { height: 280px; }
+  .chat-widget { width: 200px; bottom: 8px; right: 8px; }
+  .chat-header { padding: 10px 12px; }
+  .chat-msg { font-size: 10px; }
+  .chat-trigger { width: 44px; height: 44px; }
+  .chat-trigger svg { width: 18px; height: 18px; }
+}
+
+/* ============================================
+   STEPS
+   ============================================ */
+.steps { border-top: 1px solid var(--border); }
+.steps-header { text-align: center; margin-bottom: 56px; }
+.steps-header .section-subtitle { margin: 0 auto; }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.step-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px 28px 32px;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+.step-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.step-num {
+  font-family: var(--font-heading);
+  font-size: 72px;
+  font-weight: 800;
+  color: rgba(0, 191, 255, 0.07);
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  line-height: 1;
+  pointer-events: none;
+}
+.step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.step-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  position: relative;
+}
+.step-card p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .steps-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ============================================
+   FEATURES INCLUDED
+   ============================================ */
+.included { border-top: 1px solid var(--border); }
+.included-header { text-align: center; margin-bottom: 56px; }
+.included-header .section-subtitle { margin: 0 auto; }
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.included-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.included-item:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+}
+.included-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(0, 191, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.included-item h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.included-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ============================================
+   UPGRADE
+   ============================================ */
+.upgrade { border-top: 1px solid var(--border); }
+.upgrade-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.upgrade-header { text-align: center; margin-bottom: 48px; }
+.upgrade-header .section-subtitle { margin: 0 auto; }
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.upgrade-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.3s;
+}
+.upgrade-item:hover { border-color: rgba(0,191,255,0.2); }
+.upgrade-icon {
+  flex-shrink: 0;
+  font-size: 20px;
+  margin-top: 2px;
+}
+.upgrade-item h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.upgrade-item p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.upgrade-cta {
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .upgrade-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   SIGNUP FORM
+   ============================================ */
+.signup { border-top: 1px solid var(--border); }
+.signup-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.signup-header { text-align: center; margin-bottom: 48px; }
+.signup-header .section-subtitle { margin: 0 auto; }
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 48px 40px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.form-label .optional {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.form-input,
+.form-select,
+.form-textarea {
+  background: #1a1a24;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.12);
+}
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235c5c72' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+.form-select option {
+  background: #1a1a24;
+  color: var(--text);
+}
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.form-submit {
+  margin-top: 8px;
+  width: 100%;
+  padding: 16px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(0,191,255,0.2);
+}
+.form-submit:hover {
+  background: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,191,255,0.3);
+}
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+}
+.form-success.show {
+  display: block;
+}
+.form-success-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.form-success h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.form-success p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .form-card { padding: 32px 24px; }
+}
+
+/* ============================================
+   SOCIAL PROOF
+   ============================================ */
+.proof { border-top: 1px solid var(--border); }
+.proof-inner { text-align: center; }
+.proof-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.proof-stat {}
+.proof-number {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.proof-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .proof-stats { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 64px 0 40px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 48px;
+}
+.footer-brand-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 12px;
+}
+.footer-brand p {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 260px;
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--text); }
+.footer-bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+.footer-socials a {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+.footer-socials a:hover { border-color: var(--border-light); color: var(--text); }
+
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-left">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#about-us">About</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Agent NexLiFy">
+    </a>
+    <div class="nav-right">
+      <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="nav-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Login</span></a>
+      <a href="#signup" class="nav-cta">Get Free Widget</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-badge reveal">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      100% Free &mdash; No Credit Card Required
+    </div>
+    <h1 class="reveal">Your Free <span class="accent">AI Chat Widget</span></h1>
+    <p class="hero-sub reveal">Add an AI-powered assistant to your website in under 60 seconds. No credit card. No commitment. Just paste one line of code.</p>
+    <a href="#signup" class="btn-primary reveal">Get Started Free &rarr;</a>
+
+    <!-- Animated widget mockup -->
+    <div class="widget-mockup reveal">
+      <div class="browser-frame">
+        <div class="browser-bar">
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-url">yourbusiness.com</span>
+        </div>
+        <div class="browser-body">
+          <div class="fake-header">
+            <div class="fake-logo"></div>
+            <div class="fake-nav-item"></div>
+            <div class="fake-nav-item"></div>
+            <div class="fake-nav-item"></div>
+          </div>
+          <div class="fake-content">
+            <div class="fake-h1"></div>
+            <div class="fake-h1-2"></div>
+            <div class="fake-text"></div>
+            <div class="fake-text" style="width:280px;"></div>
+            <div class="fake-text" style="width:240px;"></div>
+            <div class="fake-btn"></div>
+          </div>
+          <div class="chat-widget">
+            <div class="chat-window">
+              <div class="chat-header">
+                <div class="chat-avatar">&#129302;</div>
+                <div class="chat-header-text">
+                  <div class="chat-header-name">AI Assistant</div>
+                  <div class="chat-header-status">Online now</div>
+                </div>
+              </div>
+              <div class="chat-messages">
+                <div class="typing-dots"><span></span><span></span><span></span></div>
+                <div class="chat-msg bot">Hi! How can I help you today? &#128075;</div>
+                <div class="chat-msg user">Do you offer free estimates?</div>
+                <div class="chat-msg bot">Absolutely! I can schedule one for you right now. What's your name and email?</div>
+              </div>
+              <div class="chat-input">
+                <div class="chat-input-field">Type a message...</div>
+                <div class="chat-input-send">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section steps" id="how-it-works">
+  <div class="container">
+    <div class="steps-header">
+      <div class="section-label reveal">How It Works</div>
+      <h2 class="section-title reveal">Live on your site in 3 simple steps.</h2>
+      <p class="section-subtitle reveal">No developers needed. No code to write. We handle everything.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-icon" aria-hidden="true">&#128221;</div>
+        <h3>Tell Us About Your Business</h3>
+        <p>Fill out a short form with your business name, industry, and common customer questions. That's it.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-icon" aria-hidden="true">&#9889;</div>
+        <h3>We Build Your Widget</h3>
+        <p>Our AI trains on your business information in minutes. We customize the look to match your brand.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-icon" aria-hidden="true">&#127881;</div>
+        <h3>Paste &amp; Go Live</h3>
+        <p>Copy one line of embed code to your website. Your AI assistant is live and capturing leads immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="section included" id="included">
+  <div class="container">
+    <div class="included-header">
+      <div class="section-label reveal">What's Included</div>
+      <h2 class="section-title reveal">Everything you need. Free forever.</h2>
+      <p class="section-subtitle reveal">No trial period. No hidden fees. No expiration date. Just a powerful chat widget for your business.</p>
+    </div>
+    <div class="included-grid">
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>50 AI Conversations/Month</h3>
+          <p>Enough for most small businesses to see real results.</p>
+        </div>
+      </div>
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>Smart Lead Capture</h3>
+          <p>Automatically extracts name, email, and phone from conversations.</p>
+        </div>
+      </div>
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>1 Website Embed</h3>
+          <p>One line of code. Works on any website, CMS, or page builder.</p>
+        </div>
+      </div>
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>Email Notifications</h3>
+          <p>Get notified instantly every time a new lead is captured.</p>
+        </div>
+      </div>
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>Mobile Responsive</h3>
+          <p>Looks great on phones, tablets, and desktops. Always.</p>
+        </div>
+      </div>
+      <div class="included-item reveal">
+        <div class="included-check" aria-hidden="true">&#10003;</div>
+        <div>
+          <h3>Setup in Under 5 Minutes</h3>
+          <p>Fill out the form. We build it. You paste one line of code. Done.</p>
+        </div>
+      </div>
+      <div class="included-item reveal" style="border-color: rgba(0,191,255,0.2);">
+        <div class="included-check" aria-hidden="true" style="background: rgba(0,191,255,0.15);">&#8734;</div>
+        <div>
+          <h3>Free Forever</h3>
+          <p>No trial. No expiration. No credit card. This is not a gimmick.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ UPGRADE ============ -->
+<section class="section upgrade" id="upgrade">
+  <div class="container upgrade-inner">
+    <div class="upgrade-header">
+      <div class="section-label reveal">Unlock More</div>
+      <h2 class="section-title reveal">Ready to go further?</h2>
+      <p class="section-subtitle reveal">The free widget is powerful on its own. But when you're ready to grow, we've got you covered.</p>
+    </div>
+    <div class="upgrade-grid">
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#127912;</div>
+        <div>
+          <h3>Custom Colors &amp; Branding</h3>
+          <p>Match your widget perfectly to your site's design.</p>
+        </div>
+      </div>
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#9854;</div>
+        <div>
+          <h3>Remove Watermark</h3>
+          <p>No more "Powered by AgentNexLiFy" badge.</p>
+        </div>
+      </div>
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#128172;</div>
+        <div>
+          <h3>Unlimited Conversations</h3>
+          <p>No cap on how many chats your widget can handle.</p>
+        </div>
+      </div>
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#128241;</div>
+        <div>
+          <h3>SMS Follow-Ups &amp; Automation</h3>
+          <p>Auto-text leads after chat for higher conversion.</p>
+        </div>
+      </div>
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#128279;</div>
+        <div>
+          <h3>CRM Integration</h3>
+          <p>GoHighLevel, HubSpot, Salesforce, and more.</p>
+        </div>
+      </div>
+      <div class="upgrade-item reveal">
+        <div class="upgrade-icon" aria-hidden="true">&#127760;</div>
+        <div>
+          <h3>Multi-Channel</h3>
+          <p>Instagram DMs, Facebook Messenger, Google Business.</p>
+        </div>
+      </div>
+    </div>
+    <div class="upgrade-cta reveal">
+      <a href="index.html#pricing" class="btn-secondary">See Plans &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="section proof">
+  <div class="container proof-inner">
+    <div class="proof-stats">
+      <div class="proof-stat reveal">
+        <div class="proof-number">50+</div>
+        <div class="proof-label">Businesses Using AgentNexLiFy</div>
+      </div>
+      <div class="proof-stat reveal">
+        <div class="proof-number">4 min</div>
+        <div class="proof-label">Average Setup Time</div>
+      </div>
+      <div class="proof-stat reveal">
+        <div class="proof-number">3x</div>
+        <div class="proof-label">More Leads Captured With AI Chat</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNUP FORM ============ -->
+<section class="section signup" id="signup">
+  <div class="container signup-inner">
+    <div class="signup-header">
+      <div class="section-label reveal">Get Started</div>
+      <h2 class="section-title reveal">Build your free widget now.</h2>
+      <p class="section-subtitle reveal">Fill out the form below and we'll have your custom AI chat widget ready within 24 hours.</p>
+    </div>
+    <div class="form-card reveal">
+      <!-- Form action placeholder — replace YOUR_ID with actual Formspree endpoint -->
+      <form id="widget-form" action="#" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="business-name">Business Name</label>
+            <input class="form-input" type="text" id="business-name" name="business_name" placeholder="Acme Plumbing" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="your-name">Your Name</label>
+            <input class="form-input" type="text" id="your-name" name="your_name" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="john@acmeplumbing.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone <span class="optional">(optional)</span></label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="website">Website URL</label>
+            <input class="form-input" type="url" id="website" name="website" placeholder="https://acmeplumbing.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="industry">Industry</label>
+            <select class="form-select" id="industry" name="industry" required>
+              <option value="" disabled selected>Select your industry</option>
+              <option value="plumbing-hvac">Plumbing / HVAC</option>
+              <option value="dental">Dental</option>
+              <option value="real-estate">Real Estate</option>
+              <option value="law-firm">Law Firm</option>
+              <option value="med-spa">Med Spa</option>
+              <option value="fitness">Fitness</option>
+              <option value="contractor">Contractor</option>
+              <option value="marketing-agency">Marketing Agency</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="description">Brief business description / common customer questions <span class="optional">(optional)</span></label>
+            <textarea class="form-textarea" id="description" name="description" placeholder="E.g., We're a family plumbing company. Customers usually ask about pricing, emergency availability, and service areas."></textarea>
+          </div>
+          <div class="form-group full">
+            <button type="submit" class="form-submit">Build My Free Widget &rarr;</button>
+          </div>
+        </div>
+      </form>
+      <div class="form-success" id="form-success">
+        <div class="form-success-icon">&#127881;</div>
+        <h3>You're in!</h3>
+        <p>We'll have your custom AI chat widget ready within 24 hours. Check your email for next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Agent NexLiFy Logo" class="footer-brand-logo">
+        <p>AI-powered operations for businesses.</p>
+        <a href="#signup" class="btn-primary" style="margin-top: 16px; font-size: 14px; padding: 12px 24px;">Get Free Widget &rarr;</a>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#why">Why Us</a></li>
+          <li><a href="index.html#about-us">About</a></li>
+          <li><a href="mailto:hello@agentnexlify.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Agent NexLiFy. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="#" aria-label="Twitter / X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  "use strict";
+
+  // Nav scroll effect
+  var nav = document.querySelector(".nav");
+  var scrolled = false;
+  function checkScroll() {
+    var s = window.scrollY > 20;
+    if (s !== scrolled) {
+      scrolled = s;
+      nav.classList.toggle("scrolled", s);
+    }
+  }
+  window.addEventListener("scroll", checkScroll, { passive: true });
+  checkScroll();
+
+  // Mobile nav toggle
+  var toggle = document.querySelector(".nav-toggle");
+  var links = document.querySelector(".nav-left");
+  toggle.addEventListener("click", function() {
+    var open = links.classList.toggle("open");
+    toggle.classList.toggle("active", open);
+    toggle.setAttribute("aria-expanded", open);
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  links.querySelectorAll("a").forEach(function(a) {
+    a.addEventListener("click", function() {
+      links.classList.remove("open");
+      toggle.classList.remove("active");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach(function(el) { observer.observe(el); });
+  } else {
+    reveals.forEach(function(el) { el.classList.add("visible"); });
+  }
+
+  // Form submission
+  var form = document.getElementById("widget-form");
+  var success = document.getElementById("form-success");
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    // TODO: Replace form action="#" with actual Formspree URL:
+    // action="https://formspree.io/f/xpwzgkby"
+    // Then remove this preventDefault and let the form submit natively,
+    // or use fetch() for async submission:
+    //
+    // fetch("https://formspree.io/f/xpwzgkby", {
+    //   method: "POST",
+    //   body: new FormData(form),
+    //   headers: { "Accept": "application/json" }
+    // }).then(function(r) {
+    //   if (r.ok) { showSuccess(); }
+    // });
+
+    showSuccess();
+  });
+
+  function showSuccess() {
+    form.style.display = "none";
+    success.classList.add("show");
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+})();
+</script>
+</body>
+</html>

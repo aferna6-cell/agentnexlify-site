@@ -101,14 +101,15 @@ button { font-family: inherit; cursor: pointer; border: none; }
   right: 0;
   z-index: 1000;
   padding: 0 24px;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
   border-bottom: 1px solid transparent;
+  background: #0a0a0f;
 }
 .nav.scrolled {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(10, 10, 15, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: var(--border);
+  border-bottom-color: rgba(255,255,255,0.08);
 }
 .nav-inner {
   max-width: var(--max-width);
@@ -129,22 +130,22 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .nav-left a {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #9494a8;
   transition: color 0.2s;
   white-space: nowrap;
 }
-.nav-left a:hover { color: var(--text-primary); }
+.nav-left a:hover { color: #f0f0f5; }
 .nav-search {
   display: flex;
   align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: #9494a8;
   transition: color 0.2s;
   padding: 0;
 }
-.nav-search:hover { color: var(--text-primary); }
+.nav-search:hover { color: #f0f0f5; }
 .nav-search svg { width: 16px; height: 16px; }
 
 /* CENTER: logo */
@@ -171,24 +172,24 @@ button { font-family: inherit; cursor: pointer; border: none; }
   gap: 4px;
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #9494a8;
   transition: color 0.2s;
   cursor: pointer;
   background: none;
   border: none;
 }
-.nav-lang:hover { color: var(--text-primary); }
+.nav-lang:hover { color: #f0f0f5; }
 .nav-lang svg { width: 16px; height: 16px; }
 .nav-login {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #9494a8;
   transition: color 0.2s;
   display: flex;
   align-items: center;
   gap: 6px;
 }
-.nav-login:hover { color: var(--text-primary); }
+.nav-login:hover { color: #f0f0f5; }
 .nav-login svg { width: 15px; height: 15px; }
 .nav-cta {
   display: inline-flex;
@@ -219,7 +220,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   left: 0;
   width: 22px;
   height: 2px;
-  background: var(--text-primary);
+  background: #f0f0f5;
   border-radius: 2px;
   transition: transform 0.3s, opacity 0.3s;
 }
@@ -239,7 +240,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
     left: 0;
     right: 0;
     bottom: 0;
-    background: #ffffff;
+    background: #0a0a0f;
     flex-direction: column;
     padding: 0;
     gap: 0;
@@ -251,7 +252,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
   }
   .nav-left.open { transform: translateY(0); opacity: 1; }
   .nav-left li {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .nav-left li:last-child { border-bottom: none; }
   .nav-left a {
@@ -260,11 +261,11 @@ button { font-family: inherit; cursor: pointer; border: none; }
     justify-content: space-between;
     font-size: 17px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: #f0f0f5;
     padding: 18px 24px;
     width: 100%;
   }
-  .nav-left a:hover { background: var(--bg-secondary); }
+  .nav-left a:hover { background: rgba(255,255,255,0.05); }
   .nav-left .nav-search { display: none; }
   .nav-logo { justify-content: center; }
   .nav-right { gap: 14px; }
@@ -280,36 +281,39 @@ button { font-family: inherit; cursor: pointer; border: none; }
   padding: 140px 0 64px;
   text-align: center;
   overflow: hidden;
+  background: #0a0a0f;
 }
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 30%, var(--accent-glow) 0%, transparent 70%),
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(29, 78, 216, 0.12) 0%, transparent 70%),
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 100% 100%, 60px 60px, 60px 60px;
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   pointer-events: none;
 }
-.hero-content { position: relative; z-index: 1; }
+.hero-content { position: relative; z-index: 1; color: #f0f0f5; }
 .hero-logo {
   width: 120px;
   height: auto;
   margin: 0 auto 32px;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
 }
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 8px 18px;
-  background: rgba(29, 78, 216, 0.06);
-  border: 1px solid rgba(29, 78, 216, 0.15);
+  background: rgba(29, 78, 216, 0.15);
+  border: 1px solid rgba(91, 156, 245, 0.25);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--accent);
+  color: #5b9cf5;
   margin-bottom: 32px;
 }
 .hero-badge-dot {
@@ -329,11 +333,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
   line-height: 1.08;
   margin-bottom: 24px;
   letter-spacing: -1px;
+  color: #f0f0f5;
 }
-.hero h1 .accent { color: var(--accent); }
+.hero h1 .accent { color: #5b9cf5; }
 .hero-sub {
   font-size: clamp(17px, 2.5vw, 21px);
-  color: var(--text-secondary);
+  color: #9494a8;
   max-width: 620px;
   margin: 0 auto 40px;
   line-height: 1.6;
@@ -376,6 +381,15 @@ button { font-family: inherit; cursor: pointer; border: none; }
   border: 1px solid var(--border-light);
   transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
+.hero .btn-secondary {
+  color: #f0f0f5;
+  border-color: rgba(255,255,255,0.2);
+}
+.hero .btn-secondary:hover {
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
 .btn-secondary:hover {
   border-color: var(--text-muted);
   background: rgba(0,0,0,0.03);
@@ -396,7 +410,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .trust-bar-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--text-muted);
+  color: #5c5c72;
   letter-spacing: 0.5px;
   margin-bottom: 20px;
 }
@@ -410,12 +424,12 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .trust-bar-logos svg {
   height: 24px;
   width: auto;
-  opacity: 0.4;
+  opacity: 0.3;
   transition: opacity 0.3s;
-  fill: var(--text-secondary);
+  fill: #9494a8;
 }
 .trust-bar-logos svg:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 @media (max-width: 480px) {
   .trust-bar-logos { gap: 24px; }
