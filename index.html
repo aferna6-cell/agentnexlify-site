@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agent NexLiFy | AI-Powered Operations for Your Business</title>
-<meta name="description" content="Agent NexLiFy automates your emails, scheduling, lead capture, follow-ups, and admin so you can spend more time doing what you love. Starting at $99/mo.">
+<meta name="description" content="Agent NexLiFy automates your emails, scheduling, lead capture, follow-ups, and admin so you can spend more time doing what you love. Start free, upgrade anytime.">
 <meta property="og:title" content="AgentNexLiFy — AI-Powered Operations for Your Business">
 <meta property="og:description" content="We automate your emails, scheduling, lead capture, follow-ups, and admin — so you can focus on what you do best.">
 <meta property="og:image" content="https://agentnexlify.com/og-image.png">
@@ -658,8 +658,8 @@ button { font-family: inherit; cursor: pointer; border: none; }
 .pricing-header .section-subtitle { margin: 0 auto; }
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
   align-items: start;
 }
 .pricing-card {
@@ -821,11 +821,15 @@ button { font-family: inherit; cursor: pointer; border: none; }
   color: var(--text-muted);
 }
 
-@media (max-width: 1100px) {
-  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 1200px) {
+  .pricing-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
 }
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 480px) {
   .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .pricing-card.free-tier { order: -2; }
   .pricing-card.popular { order: -1; }
   .pricing-card { padding: 32px 28px; }
   .pricing-dollar { font-size: 48px; }
@@ -1068,6 +1072,121 @@ button { font-family: inherit; cursor: pointer; border: none; }
 @media (max-width: 480px) {
   .footer-inner { grid-template-columns: 1fr; }
 }
+
+/* ============================================
+   FREE TIER CARD
+   ============================================ */
+.pricing-card.free-tier {
+  background: transparent;
+  border: 2px dashed var(--border-light);
+}
+.pricing-card.free-tier:hover {
+  border-color: var(--accent);
+  border-style: solid;
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(29, 78, 216, 0.08);
+}
+.pricing-card.free-tier .pricing-dollar {
+  color: var(--accent);
+}
+.pricing-card.free-tier .pricing-cta {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+.pricing-card.free-tier .pricing-cta:hover {
+  background: var(--accent);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(29, 78, 216, 0.2);
+  transform: translateY(-1px);
+}
+.pricing-not-included {
+  list-style: none;
+  margin-bottom: 16px;
+}
+.pricing-not-included li {
+  padding: 5px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.55;
+  padding-left: 22px;
+  position: relative;
+}
+.pricing-not-included li::before {
+  content: '\2717';
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+  opacity: 0.5;
+  font-size: 12px;
+}
+
+/* ============================================
+   REFERRAL SECTION
+   ============================================ */
+.referral-card {
+  background: linear-gradient(135deg, rgba(29, 78, 216, 0.05) 0%, rgba(29, 78, 216, 0.01) 100%);
+  border: 1px solid rgba(29, 78, 216, 0.12);
+  border-radius: 24px;
+  padding: 64px 48px;
+  text-align: center;
+}
+.referral-card .section-title {
+  margin-bottom: 12px;
+}
+.referral-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.referral-step {
+  text-align: center;
+  padding: 28px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.referral-step:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-light);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+.referral-step-icon {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.referral-step h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.referral-step p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.referral-example {
+  display: inline-block;
+  padding: 16px 32px;
+  background: rgba(29, 78, 216, 0.06);
+  border: 1px solid rgba(29, 78, 216, 0.12);
+  border-radius: 12px;
+  font-size: 16px;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+.referral-example strong {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .referral-steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 40px; }
+  .referral-card { padding: 40px 24px; }
+}
 </style>
 </head>
 <body>
@@ -1105,9 +1224,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
       Built to give business owners their time back
     </div>
     <h1 class="reveal">Focus on what you do best.<br><span class="accent">We'll handle the rest.</span></h1>
-    <p class="hero-sub reveal">Agent NexLiFy builds practical automation systems that manage your leads, customer interactions, internal workflows, and administrative tasks so you can spend less time managing and more time growing.</p>
+    <p class="hero-sub reveal">Start with a free AI chatbot on your website. Upgrade when you're ready. We automate your leads, follow-ups, scheduling, and admin so you can focus on what matters.</p>
     <div class="hero-buttons reveal">
       <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="btn-primary">Book a Strategy Call &rarr;</a>
+      <a href="/free-widget.html" class="btn-secondary">Get Free Widget &rarr;</a>
       <a href="#how-it-works" class="btn-secondary">See How It Works &darr;</a>
     </div>
     <div class="trust-bar reveal">
@@ -1283,6 +1403,51 @@ button { font-family: inherit; cursor: pointer; border: none; }
     </div>
     <div class="pricing-grid">
 
+      <!-- Free -->
+      <div class="pricing-card free-tier reveal">
+        <div class="pricing-plan-name">AI Chat Widget</div>
+        <div class="pricing-tagline">Try before you buy — add AI to your website in 60 seconds</div>
+        <div class="pricing-amount">
+          <span class="pricing-dollar">$0</span>
+          <span class="pricing-period">/month</span>
+        </div>
+        <div class="pricing-setup" style="color: var(--accent); font-weight: 600;">Free Forever</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>
+            <strong>50 AI Conversations/mo</strong>
+            <div class="feat-desc">Enough to test AI chat on your site and start capturing leads.</div>
+          </li>
+          <li>
+            <strong>Lead Capture</strong>
+            <div class="feat-desc">Automatically collect name, email, and phone from every visitor.</div>
+          </li>
+          <li>
+            <strong>1 Website Embed</strong>
+            <div class="feat-desc">Drop a chat widget onto any page with a single code snippet.</div>
+          </li>
+          <li>
+            <strong>Email Notifications</strong>
+            <div class="feat-desc">Get notified instantly when a new lead comes in.</div>
+          </li>
+          <li>
+            <strong>AgentNexLiFy Watermark</strong>
+            <div class="feat-desc">"Powered by AgentNexLiFy" branding on the widget.</div>
+          </li>
+        </ul>
+        <div class="pricing-divider"></div>
+        <div class="pricing-includes" style="opacity: 0.6;">Upgrade to unlock</div>
+        <ul class="pricing-not-included">
+          <li>Custom branding</li>
+          <li>CRM integrations</li>
+          <li>Multi-channel (SMS, social)</li>
+          <li>Automation workflows</li>
+          <li>Priority support</li>
+        </ul>
+        <div class="pricing-best">Best for: Testing AI chat on your website</div>
+        <a href="/free-widget.html" class="pricing-cta">Get Your Free Widget &rarr;</a>
+      </div>
+
       <!-- Foundation -->
       <div class="pricing-card reveal">
         <div class="pricing-plan-name">Foundation</div>
@@ -1309,6 +1474,10 @@ button { font-family: inherit; cursor: pointer; border: none; }
           <li>
             <strong>Appointment Reminders</strong>
             <div class="feat-desc">SMS reminders 24 hours and 2 hours before every appointment. Reduces no-shows dramatically.</div>
+          </li>
+          <li>
+            <strong>Custom Branding &mdash; No Watermark</strong>
+            <div class="feat-desc">Your logo, your colors, your brand. No "Powered by" badge on your widget.</div>
           </li>
         </ul>
         <div class="pricing-best">Best for: Contractors, med spas, law firms, home services</div>
@@ -1415,7 +1584,41 @@ button { font-family: inherit; cursor: pointer; border: none; }
       </div>
 
     </div>
-    <p class="pricing-footer-note reveal">All plans include done-for-you setup, onboarding, and ongoing optimization. No technical skills required. Cancel anytime.</p>
+    <p class="pricing-footer-note reveal">All paid plans include done-for-you setup, onboarding, and ongoing optimization. No technical skills required. Free tier is self-serve &mdash; upgrade anytime for full support.</p>
+  </div>
+</section>
+
+<!-- ============ REFERRAL PROGRAM ============ -->
+<section class="section referral" id="referral">
+  <div class="container">
+    <div class="referral-card reveal">
+      <div class="section-label">Referral Program</div>
+      <h2 class="section-title">Share the AI. Save on Your Plan.</h2>
+      <p class="section-subtitle" style="margin: 0 auto 48px; text-align: center;">Our referral program rewards you for spreading the word.</p>
+      <div class="referral-steps">
+        <div class="referral-step reveal">
+          <div class="referral-step-icon" aria-hidden="true">&#128279;</div>
+          <h3>Share Your Link</h3>
+          <p>Every customer gets a unique referral link from their dashboard.</p>
+        </div>
+        <div class="referral-step reveal">
+          <div class="referral-step-icon" aria-hidden="true">&#127873;</div>
+          <h3>They Get 50% Off</h3>
+          <p>Your referral gets their first month at half price.</p>
+        </div>
+        <div class="referral-step reveal">
+          <div class="referral-step-icon" aria-hidden="true">&#128176;</div>
+          <h3>You Save 15%</h3>
+          <p>Get 15% off your monthly bill per active referral. Stacks up to 3x = 45% off.</p>
+        </div>
+      </div>
+      <div class="referral-example reveal">
+        <strong>Example:</strong> Refer 3 friends on the Growth plan &rarr; You save $112/month
+      </div>
+      <div class="reveal" style="text-align: center;">
+        <a href="https://calendly.com/aidanfernandes31/15-minute-agent-nexliffy-demo" class="btn-primary" style="display: inline-flex;">Start Referring &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1472,7 +1675,7 @@ button { font-family: inherit; cursor: pointer; border: none; }
           <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div class="faq-answer" id="faq-a1" role="region">
-          <div class="faq-answer-inner">Every plan builds on the one below it. Foundation ($99) covers lead capture, review requests, missed call texts, and appointment reminders. Growth ($249) adds follow-up sequences, FAQ bot, quote automation, and CRM. Operations ($499) adds AI booking, invoice follow-up, task automation, and lead scoring. Enterprise ($999) is the full package with AI sales assistant, marketing engine, dashboard, and re-engagement campaigns.</div>
+          <div class="faq-answer-inner">We offer a Free tier ($0) with 50 AI conversations, lead capture, and 1 website embed — great for trying AI on your site. Paid plans build on each other: Foundation ($99) covers lead capture, review requests, missed call texts, appointment reminders, and custom branding (no watermark). Growth ($249) adds follow-up sequences, FAQ bot, quote automation, and CRM. Operations ($499) adds AI booking, invoice follow-up, task automation, and lead scoring. Enterprise ($999) is the full package with AI sales assistant, marketing engine, dashboard, and re-engagement campaigns.</div>
         </div>
       </div>
 
