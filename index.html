@@ -331,29 +331,39 @@ button { font-family: inherit; cursor: pointer; border: none; }
   line-height: 1.7;
   margin-top: 20px;
 }
-.problem-icons {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 48px;
-  flex-wrap: wrap;
-}
-.problem-icon {
-  padding: 16px 28px;
-  border-radius: 16px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 15px;
-  font-weight: 500;
+.problem-closer {
+  font-size: 18px;
+  font-weight: 600;
   color: var(--text-primary);
-  transition: border-color 0.3s, transform 0.3s;
+  margin-top: 28px;
 }
-.problem-icon:hover {
-  border-color: #ff6b5b;
-  transform: translateY(-4px);
+
+/* ============================================
+   THE SHIFT
+   ============================================ */
+.shift { background: var(--bg-secondary); }
+.shift-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.shift-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+.shift-q {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+}
+.shift-punchline {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 32px;
 }
 
 /* ============================================
@@ -977,17 +987,30 @@ button { font-family: inherit; cursor: pointer; border: none; }
     <div class="section-label reveal">The Problem</div>
     <h2 class="section-title reveal">You started your business for a reason. Let's get you back to it.</h2>
     <p class="problem-body reveal">Emails. Leads. Scheduling. Follow-ups. Admin. The daily grind quietly takes over your calendar. Before long, you're spending more time managing tasks than driving growth.</p>
-    <p class="problem-body reveal" style="margin-top: 16px; color: var(--accent); font-weight: 500;">That's where automation changes everything.</p>
+    <p class="problem-closer reveal">You didn't build your business to manage busywork.</p>
   </div>
 </section>
 
-<!-- ============ FEATURES / WHAT WE AUTOMATE ============ -->
+<!-- ============ THE SHIFT ============ -->
+<section class="section shift">
+  <div class="container shift-inner">
+    <div class="section-label reveal">There's a Better Way</div>
+    <div class="shift-questions reveal">
+      <p class="shift-q">What if your leads were captured automatically?</p>
+      <p class="shift-q">What if follow-ups went out on time, every time?</p>
+      <p class="shift-q">What if scheduling didn't require endless back-and-forth?</p>
+    </div>
+    <p class="shift-punchline reveal">When systems handle the repetitive work, you get your time back.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT WE AUTOMATE ============ -->
 <section class="section" id="features">
   <div class="container">
     <div class="features-header">
       <div class="section-label reveal">What We Automate</div>
-      <h2 class="section-title reveal">Automation systems designed to take work off your plate.</h2>
-      <p class="section-subtitle reveal">We design, implement, and manage AI-powered workflows tailored to your business. No technical expertise required. We handle the setup, optimization, and ongoing support so everything runs smoothly.</p>
+      <h2 class="section-title reveal">Practical automation built for real businesses.</h2>
+      <p class="section-subtitle reveal">We design, implement, and manage AI-powered workflows tailored to your operations. No complex software to learn. No technical setup on your end. We handle everything so your systems run smoothly behind the scenes.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal">
